@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Registration.Models.RegistrationForm>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid backgroundWhiteBorder">
+
+
+
+    <div class="card ">
+
+        <form asp-action="NewRegistration" asp-controller="Home" method="post" enctype="multipart/form-data">
+
+
+            <div class="card-header intro" style="height: 40px">
+
+                <h5 class="text-uppercase">
+                    <div class="col-1">
+                    </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registration form
+                </h5>
+            </div>
+
+            <div class="card-body">
+                <div class="container">
+                    <!-- just to look better -->
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+                            <label for="firstName">Given Name</label>
+                            <input name="GivenName" type="text" class="form-control" style="font-size: 15PX; resize: none" />
+                        </div>
+
+
+                        <div class="col-md-4 mb-3">
+                            <label for="firstName">Family Name</label>
+                            <input name="FamilyName" type="text" class="form-control" style="font-size: 15PX; resize: none" />
+                        </div>
+
+
+                        <div class="col-md-4 mb-3">
+                            <label>Gender</label>
+                            <select name="Gender" class="form-control">
+                                <option value="0">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="col-md-4 mb-3">
+                            <label>Country</label>
+                            <select name="Country" class="form-control">
+                                <option value="0">Select a country</option>
+                                <option value="Iran">Iran</option>
+                                <option value="Somali">Somali</option>
+                                <option value="Iraq">Iraq</option>
+                                <option value="Turkey">Turkey</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-4 mb-3">
+                            <label for="firstName">Registration Date</label>
+                            <input name="RegistrationDate" type="date" class="form-control" style="font-size: 15PX; resize: none" />
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card-footer intro">
+                <div class="row">
+                    <div class="col-8">&nbsp;</div>
+                    <div class="col-4">
+                        <input type="submit" class="btn btn-warning" id="btnsend" value="Save this record" />
+                    </div>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+
+
+    <br /><br />
+
+
+
+    <div class="tab-pane" id="Transportation" role="tabpanel" aria-labelledby="Transportation-tab">
+        <table class="table table-responsive-sm table-bordered table-striped table-sm" id="AlreadySubmitted">
+            <thead align="center" class="thead-light">
+                <tr>
+                    <td>Given Name</td>
+                    <td>Family Name</td>
+                    <td>Gender</td>
+                    <td>Country</td>
+                    <td>Registration date</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr align="center" style="background-color:White;">
+                        <td>@item.GivenName</td>
+                        <td>@item.FamilyName</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Country</td>
+                        <td>@item.RegistrationDate</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
